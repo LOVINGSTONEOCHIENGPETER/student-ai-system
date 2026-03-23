@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #28a745, #85e085);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+form {
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+}
+
+input, button {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button {
+    background:#28a745;
+    color:white;
+}
+
+.flash { padding:10px; margin:5px; color:white; }
+.success { background:green; }
+.danger { background:red; }
+</style>
+
+</head>
+
+<body>
+
+<form method="POST">
+<h2>Register</h2>
+
+{% for c,m in get_flashed_messages(with_categories=true) %}
+<div class="flash {{c}}">{{m}}</div>
+{% endfor %}
+
+<input name="username" placeholder="Username" required>
+<input name="password" type="password" placeholder="Password" required>
+
+<button>Register</button>
+
+<a href="/">Back to Login</a>
+
+</form>
+
+</body>
+</html>

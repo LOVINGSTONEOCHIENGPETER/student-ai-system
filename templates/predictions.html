@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Predictions</title>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<style>
+body { font-family: Arial; background:#eef2f7; padding:20px; }
+.card {
+    background:white;
+    padding:15px;
+    margin:10px auto;
+    border-left:5px solid orange;
+    width:80%;
+}
+</style>
+
+</head>
+<body>
+
+<h2>AI Predictions - Term {{term}}</h2>
+
+{% if results %}
+    {% for r in results %}
+        <div class="card">
+            <b>{{r[0]}}</b><br>
+            {{r[1]}}
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">No risks detected</div>
+{% endif %}
+
+<!-- GRAPH -->
+<div id="graph"></div>
+
+<script>
+    var graphs = {{ graphJSON | safe }};
+    Plotly.newPlot('graph', graphs.data, graphs.layout);
+</script>
+
+<br>
+<a href="/dashboard">Dashboard</a>
+<a href="/students?term={{term}}">Back to Students</a>
+
+</body>
+</html>

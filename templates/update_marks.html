@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Update Marks</title>
+
+<style>
+body { font-family: Arial; background:#f0f4f8; }
+form { width:300px; margin:auto; background:white; padding:20px; }
+input, button { width:100%; padding:10px; margin:5px 0; }
+</style>
+
+</head>
+<body>
+
+<h2 style="text-align:center;">Update Marks</h2>
+
+<form method="POST">
+
+<input type="number" name="math" value="{{student[3]}}" min="0" max="100" required>
+<input type="number" name="english" value="{{student[4]}}" min="0" max="100" required>
+<input type="number" name="kiswahili" value="{{student[5]}}" min="0" max="100" required>
+<input type="number" name="science" value="{{student[6]}}" min="0" max="100" required>
+<input type="number" name="social" value="{{student[7]}}" min="0" max="100" required>
+
+<button>Update</button>
+
+</form>
+
+<br>
+<a href="/students?term={{term}}">Back</a>
+
+</body>
+</html>

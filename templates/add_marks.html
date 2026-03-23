@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Student Marks</title>
+
+<style>
+body { font-family: Arial; background:#f4f6f9; padding:20px; }
+table { width:100%; border-collapse:collapse; }
+th { background:#007bff; color:white; padding:10px; }
+td { padding:8px; border:1px solid #ccc; }
+input, select { width:100%; padding:8px; }
+button { background:#28a745; color:white; padding:10px; border:none; }
+.flash { padding:10px; margin:10px 0; color:white; }
+.success { background:green; }
+.warning { background:orange; }
+.danger { background:red; }
+</style>
+
+</head>
+<body>
+
+<h2>Add Student Marks</h2>
+
+{% for c, m in get_flashed_messages(with_categories=true) %}
+<div class="flash {{c}}">{{m}}</div>
+{% endfor %}
+
+<form method="POST">
+
+<table>
+<tr>
+<th>RegNo</th><th>Name</th><th>Term</th>
+<th>Math</th><th>English</th><th>Kiswahili</th>
+<th>Science</th><th>Social</th><th>Action</th>
+</tr>
+
+<tr>
+<td><input type="text" name="regno" required></td>
+<td><input type="text" name="name" required></td>
+
+<td>
+<select name="term" required>
+<option value="">Select</option>
+<option value="1">Term 1</option>
+<option value="2">Term 2</option>
+<option value="3">Term 3</option>
+</select>
+</td>
+
+<td><input type="number" name="math" min="0" max="100" required oninput="validate(this)"></td>
+<td><input type="number" name="english" min="0" max="100" required oninput="validate(this)"></td>
+<td><input type="number" name="kiswahili" min="0" max="100" required oninput="validate(this)"></td>
+<td><input type="number" name="science" min="0" max="100" required oninput="validate(this)"></td>
+<td><input type="number" name="social" min="0" max="100" required oninput="validate(this)"></td>
+
+<td><button type="submit">Add</button></td>
+</tr>
+</table>
+
+</form>
+
+<br>
+<a href="/dashboard">Back to Dashboard</a>
+
+<script>
+function validate(input){
+    if(input.value < 0 || input.value > 100){
+        alert("Marks must be between 0 and 100");
+        input.value = "";
+    }
+}
+</script>
+
+</body>
+</html>

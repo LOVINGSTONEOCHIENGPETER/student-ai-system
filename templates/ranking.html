@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ranking</title>
+
+<style>
+body { font-family: Arial; background:#f4f6f9; }
+
+h2 { text-align:center; }
+
+table { width:100%; border-collapse:collapse; margin-top:20px; }
+
+th, td {
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+th { background:#007bff; color:white; }
+
+.nav {
+    text-align:center;
+    margin-top:20px;
+}
+
+.nav a {
+    display:inline-block;
+    margin:5px;
+    padding:10px 15px;
+    background:#007bff;
+    color:white;
+    text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Ranking - Term {{term}}</h2>
+
+<table>
+<tr>
+<th>Position</th>
+<th>RegNo</th>
+<th>Name</th>
+<th>Total</th>
+</tr>
+
+{% for pos, student, total in ranking %}
+<tr>
+<td>{{pos}}</td>
+<td>{{student[1]}}</td>
+<td>{{student[2]}}</td>
+<td>{{total}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<div class="nav">
+<a href="/dashboard">Dashboard</a>
+<a href="/students?term={{term}}">Back to Students</a>
+</div>
+
+</body>
+</html>

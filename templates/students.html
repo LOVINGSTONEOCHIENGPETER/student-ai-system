@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Students</title>
+
+<style>
+body { font-family: Arial; background:#f4f6f9; }
+
+h2 { text-align:center; }
+
+table { width:100%; border-collapse:collapse; margin-top:20px; }
+
+th, td {
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+th { background:#007bff; color:white; }
+
+a {
+    padding:5px 10px;
+    text-decoration:none;
+    color:white;
+    border-radius:4px;
+}
+
+.edit { background:orange; }
+.delete { background:red; }
+
+.flash { padding:10px; margin:10px; color:white; }
+.success { background:green; }
+.warning { background:orange; }
+.danger { background:red; }
+
+.nav {
+    margin-top:20px;
+    text-align:center;
+}
+
+.nav a {
+    display:inline-block;
+    margin:5px;
+    padding:10px 15px;
+    background:#007bff;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Students - Term {{term}}</h2>
+
+<!-- FLASH MESSAGES -->
+{% for c,m in get_flashed_messages(with_categories=true) %}
+<div class="flash {{c}}">{{m}}</div>
+{% endfor %}
+
+<table>
+<tr>
+<th>RegNo</th>
+<th>Name</th>
+<th>Math</th>
+<th>English</th>
+<th>Kiswahili</th>
+<th>Science</th>
+<th>Social</th>
+<th>Total</th>
+<th>Actions</th>
+</tr>
+
+{% for s in students %}
+<tr>
+<td>{{s[1]}}</td>
+<td>{{s[2]}}</td>
+<td>{{s[3]}}</td>
+<td>{{s[4]}}</td>
+<td>{{s[5]}}</td>
+<td>{{s[6]}}</td>
+<td>{{s[7]}}</td>
+<td>{{s[3]+s[4]+s[5]+s[6]+s[7]}}</td>
+
+<td>
+<a class="edit" href="/update/{{term}}/{{s[0]}}">Edit</a>
+<a class="delete" href="/delete/{{term}}/{{s[0]}}"
+   onclick="return confirm('Are you sure you want to delete this student?')">
+   Delete
+</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<!-- NAVIGATION -->
+<div class="nav">
+<a href="/dashboard">Dashboard</a>
+<a href="/add">Add Student</a>
+
+<a href="/students?term=1">Term 1</a>
+<a href="/students?term=2">Term 2</a>
+<a href="/students?term=3">Term 3</a>
+
+<a href="/predictions?term={{term}}">AI Predictions</a>
+<a href="/ranking?term={{term}}">Ranking</a>
+</div>
+
+</body>
+</html>

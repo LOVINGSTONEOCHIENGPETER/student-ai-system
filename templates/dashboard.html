@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+
+<style>
+body {
+    font-family: Arial;
+    background:#f4f6f9;
+    text-align:center;
+}
+
+h2 { margin-top:20px; }
+
+a {
+    display:block;
+    width:250px;
+    margin:10px auto;
+    padding:15px;
+    background:#007bff;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+a:hover { background:#0056b3; }
+</style>
+
+</head>
+
+<body>
+
+<h2>Admin Dashboard</h2>
+
+<a href="/add">Add Student Marks</a>
+
+<a href="/students?term=1">View Term 1</a>
+<a href="/students?term=2">View Term 2</a>
+<a href="/students?term=3">View Term 3</a>
+
+<a href="/predictions?term=1">AI Predictions Term 1</a>
+<a href="/predictions?term=2">AI Predictions Term 2</a>
+<a href="/predictions?term=3">AI Predictions Term 3</a>
+
+<a href="/ranking?term=1">Ranking Term 1</a>
+<a href="/ranking?term=2">Ranking Term 2</a>
+<a href="/ranking?term=3">Ranking Term 3</a>
+
+<a href="/logout">Logout</a>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+form {
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+}
+
+input, button {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button {
+    background:#007bff;
+    color:white;
+    border:none;
+}
+
+.flash { padding:10px; margin:5px; color:white; }
+.success { background:green; }
+.danger { background:red; }
+</style>
+
+</head>
+
+<body>
+
+<form method="POST">
+<h2>Login</h2>
+
+{% for c,m in get_flashed_messages(with_categories=true) %}
+<div class="flash {{c}}">{{m}}</div>
+{% endfor %}
+
+<input name="username" placeholder="Username" required>
+<input name="password" type="password" placeholder="Password" required>
+
+<button>Login</button>
+
+<a href="/register">Register</a>
+
+</form>
+
+</body>
+</html>
